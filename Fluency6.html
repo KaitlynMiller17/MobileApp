@@ -1,0 +1,50 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Fluency 6</title>
+
+</head>
+
+<body>
+    <script>
+        // Here I used the createElement to create a couple buttons and a break.
+        var button = document.createElement('button');
+        var button2 = document.createElement('button');
+        var br = document.createElement('br');
+        // This part allows me to make text on the buttons
+        button.innerHTML = "Add something!";
+        button2.innerHTML = "Remove something!";
+        // Right here is where I make the elements go to the body so they can pop up on the screen.
+        document.body.appendChild(button);
+        document.body.appendChild(br);
+        document.body.appendChild(button2);
+        // This part is the onclick piece of the button. But the cool part is that I can write the function right into it.
+        button.onclick = function fruits() {
+            // Right here I use the create to make a list element.
+            var li = document.createElement('li');
+            // I can add different kids of elements, its interesting to see which ones need to be used.
+            var cant = document.createTextNode("Cantaloupe");
+            // Right here I pull the list I created in the body of the HTML. I wanted to learn how to pull lists like I pull inputs.
+            var list = document.getElementById('mylist');
+            // Right here I place the cant var into the list element I created.
+            li.appendChild(cant);
+            // Right here I can add the whole thing into the list I have down below.
+            list.insertBefore(li, list.childNodes[0]);
+        }
+        // Down here I can remove a piece of the list by hitting the button.
+        button2.onclick = function remove() {
+            var list = document.getElementById('mylist');
+            list.removeChild(list.childNodes[3]);
+        }
+    </script>
+
+    <ul id='mylist'>
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Grape</li>
+    </ul>
+
+</body></html>

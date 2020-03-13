@@ -1,0 +1,36 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Fluency 3</title>
+
+</head>
+
+<body>
+    <script>
+        // Here we create a object that is just a string.
+        const tri = '{"shape":"Triangle", "sides": 3, "color": "Green"}';
+        // This is where we change the string into pieces using the JSON.parse method.
+        const Triangle = JSON.parse(tri);
+        // Right here we send it to the console to see how it displayed.
+        console.log(Triangle.shape);
+        console.log(Triangle.sides);
+        console.log(Triangle.color);
+        // it works! we see it send each piece that we wanted to the console.
+        // here we create an object that has multiple propertieds to it.
+        var circle = {
+            shape: "Circle",
+            sides: 1,
+            color: "Yellow"
+        };
+        // We want to change this into a string, it helps with storing it.
+        var cir = JSON.stringify(circle);
+        // Time to test it again and see how it came out.
+        console.log(cir);
+        // It worked, it shows all the code it needs to be parsed again.
+    </script>
+    <p> This is all done in the console, take it look there to see what is going on!</p>
+
+</body></html>

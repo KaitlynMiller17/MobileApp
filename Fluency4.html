@@ -1,0 +1,42 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Fluency 4</title>
+
+</head>
+
+<body>
+
+    <script>
+        // We are taking a look at how to use the XMLhttpsRequest. This makes it so a piece of the page can be refreshed instead of the whole page.
+        var xmlhttp = new XMLHttpRequest();
+        // Right here I used to have the array that held the list we're using below. But I found out that it can be pulled into the program. (That's what this XMLHttpRequest does!)
+        var url = "array.txt";
+        // right here is where we make the function that can take the text document and make it the list we want to use.
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var arr = JSON.parse(this.responseText);
+                display(arr);
+            }
+        };
+        // Right here we had a couple of things we could have put, GET or POST. Usually either can be used, but the GET is faster because it has a size limit, the other can do somethings that are better.
+        xmlhttp.open("GET", url, true);
+        // This part sends it to the server.
+        xmlhttp.send();
+        // this is the function that creates the links in HTML format so they can be clicked on.
+        function display(arr) {
+            var out = "";
+            var i;
+            for (i = 0; i < arr.length; i++) {
+                out += '<a href="' + arr[i].url + '">' + arr[i].Title + '</a><br />';
+            }
+            // This part sends it to the div in the body of the HTML.
+            document.getElementById('output').innerHTML = out;
+        }
+    </script>
+    <div id="output"></div>
+</body></html>

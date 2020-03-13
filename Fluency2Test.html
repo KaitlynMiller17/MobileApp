@@ -1,0 +1,32 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Fluency 2</title>
+
+</head>
+
+<body>
+  <script>
+      const shape = {
+          name: "",
+          sides: 0,
+          color: "",
+          whatAmI: "I am a shape.",
+          talk: function(){
+          console.log('I am a ' + this.name + ' and I am ' + this.color + '. I have ' + this.sides + ' sides. ' + this.whatAmI);
+      }
+      }
+      const tri = Object.create(shape);
+      tri.name = "Triangle";
+      tri.sides = 3;
+      tri.color = "green";
+
+      tri.talk();
+    </script>
+
+    
+</body>
+</html>

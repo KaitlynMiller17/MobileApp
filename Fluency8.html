@@ -1,0 +1,109 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Fluency 8</title>
+
+</head>
+
+<body>
+    <!--This area was used to learn how to make the transitions in CSS without using the js. I needed to learn how it worked before I could implement it. -->
+
+    <style>
+        p {
+            width: 100px;
+            height: 100px;
+            background: skyblue;
+            transition: height 5s, width 5s, color 5s, background 5s, font-size 5s;
+            text-align: center;
+        }
+
+        p:hover {
+            width: 400px;
+            height: 400px;
+            background: purple;
+            color: aliceblue;
+            font-size: 30px;
+        }
+
+        /*This is where I started making the things I needed for the javascript to play with.*/
+        /*This div is the 'normal' for the box to be in. From here I make changes in classes below.*/
+        div {
+            width: 120px;
+            height: 120px;
+            background: skyblue;
+            text-align: center;
+            transition: height 5s, width 5s, color 5s, background 5s, font-size 5s;
+            position: relative;
+
+        }
+
+        /*Right here is the one that makes the box change size and color.*/
+        div.transition {
+            width: 400px;
+            height: 400px;
+            background: purple;
+            color: aliceblue;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        /* This one is going to make the animation happen, it is connected to the one below it.*/
+        div.move {
+            width: 120px;
+            height: 120px;
+            background: skyblue;
+            text-align: center;
+            transition: height 5s, width 5s, color 5s, background 5s, font-size 5s;
+            position: relative;
+            animation-name: move;
+            animation-duration: 3s;
+        }
+
+        /*Here we have the movement that we want to see from the box.*/
+        @keyframes move {
+            25% {
+                left: 50px;
+                top: 50px;
+            }
+
+            50% {
+                left: 100px;
+                top: 100px;
+            }
+
+            100% {
+                left: 200px;
+                top: 200px;
+            }
+        }
+    </style>
+    <script>
+        // This is the function for the play button, the one that makes the button change color and size.
+        function playButton() {
+            var play = document.getElementById('box');
+            // right here is the first way I found to make this happen. The classList.add is adding a class to the end of the class. It doesn't replace classes.
+            play.classList.add('transition');
+        }
+        // this is the function that will move the box.
+        function move() {
+            var play = document.getElementById('box');
+            // I wanted to keep both of these in to show the different ways of doing it. This one changes the class name instead of adding on.
+            play.className = 'move';
+        }
+    </script>
+    This first box is made in CSS.
+    <p>
+        Hover over me! I'll change shape and color!
+    </p>
+
+    <button type="button" onclick="playButton()">Play</button>
+    <button type="button" onclick="move()">Move</button>
+
+    <div id="box">Click the play button to make this box change, and the move button to make it move!</div>
+
+
+</body></html>

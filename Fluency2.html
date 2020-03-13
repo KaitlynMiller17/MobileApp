@@ -1,0 +1,36 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Fluency 2</title>
+
+</head>
+
+<body>
+    <script>
+        // We are creating a object here called shape.
+        const shape = {
+            // We gave the shape some properties that it can pass down if they don't get filled in when the new object is created.
+            name: "",
+            sides: 0,
+            color: "",
+            whatAmI: "I am a shape.",
+            // this part is making the code go to the console so we can see it come together.
+            talk: function() {
+                console.log('I am a ' + this.name + ' and I am ' + this.color + '. I have ' + this.sides + ' sides. ' + this.whatAmI);
+            }
+        }
+        // here we make a shape called tri
+        const tri = Object.create(shape);
+        // down here we give tri some properties of its own. It doesn't have something changed in the whatAmI piece, so it inherits that piece.
+        tri.name = "Triangle";
+        tri.sides = 3;
+        tri.color = "green";
+        // right here is where we use the function created in talk.
+        tri.talk();
+    </script>
+    <p> This is all done in the console, take it look there to see what is going on!</p>
+
+</body></html>

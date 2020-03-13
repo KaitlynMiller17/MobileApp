@@ -1,0 +1,70 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Fluency 9</title>
+
+</head>
+<style>
+    /*I made a few CSS additions to make it bigger and highlighted, along with the animation. pretty much the smae kind of stuff from Fluency 8*/ 
+    p {
+        background: lightpink;
+        width: 400px;
+        font-size: 30px;
+    }
+
+    div {
+        background: lightpink;
+        width: 400px;
+        font-size: 30px;
+    }
+
+    p.move {
+        width: 400px;
+        background: lightpink;
+
+        transition: height 5s, width 5s, color 5s, background 5s, font-size 5s;
+        position: relative;
+        animation-name: move;
+        animation-duration: 3s;
+        font-size: 30px
+    }
+
+    @keyframes move {
+        50% {
+            left: 100px;
+        }
+
+        100% {
+            left: 200px;
+        }
+    }
+</style>
+
+<body>
+    <script>
+        // I made some functions to make the animations happen with the events. It makes more sense than coding the function into the event.
+        function hello() {
+            document.getElementById('out').innerHTML = "Hello!";
+        }
+
+        function bye() {
+            document.getElementById('bye').innerHTML = "Goodbye!"
+        }
+
+        function move() {
+            var MoveMe = document.getElementById('MoveMe');
+            MoveMe.className = 'move';
+        }
+    </script>
+    <!--Down here I used several different moblie based events. I've used other ones in previous fluency programs, so I didn't want to recreate them. All the buttons are using the onclick event.-->
+    <p ontouchstart="hello()">Touch this and say hello!</p>
+    <div id='out'></div>
+    <p ontouchend="bye()">Try touching this one and when you let go, it'll say goodbye!</p>
+    <div id='bye'></div>
+    <p ontouchmove="move()" id='MoveMe'>Drag this text to the side!</p>
+
+
+</body></html>

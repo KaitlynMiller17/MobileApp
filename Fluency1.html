@@ -1,0 +1,50 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Fluency 1</title>
+
+</head>
+
+<body>
+    <script>
+        // I am creating a function that will count up from 1 to a number between and including 10. Anything higher will be told it is too high to count to.
+        // this function is going to be used in the other one, count, so it needs to have the parameter in here.
+        function number(num) {
+            // I have to set a var i so the function knows it can use that.
+            var i;
+            // I created an empty list to hold the numbers that will be counted.
+            var out = [];
+            // this is a condition that the num must pass in order to move on to the for loop.
+            if (num <= 10) {
+                // this is my for loop, it takes the num given by the user             
+                for (i = 1; i <= num; i++) {
+                    out.push(i);
+
+                }
+                // if the num is higher than 10 it will come down here and give the response "That's too high!"
+            } else {
+                out = "That's too high!"
+
+            }
+            // this makes sure that the list is returned after the for loop is done or the else statement.
+            return out;
+        }
+        // this function is going to get the input from the user and then use the function number to receive the ourput.
+        function count() {
+            // this is how we get the input from the user.
+            var num = document.getElementById('num').value
+            // this is using the other function to create the list we want to see.
+            var out = number(num);
+            // this is the part that send the result out to the page.
+            document.getElementById('output').innerHTML = out;
+        }
+    </script>
+    Enter a number you would like to count to! <br />
+    <input type="number" id="num">
+    <button type="button" id="count" onclick="count()">Count!</button>
+    <div id=output></div>
+
+</body></html>

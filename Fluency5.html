@@ -1,0 +1,46 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Fluency 5</title>
+
+</head>
+
+<body>
+    <script>
+        //We're figuring out storage!
+        // Here we are creating a session storage, where we store the data only for as long as the window is still open.
+        sessionStorage.setItem('Circle', 'Yellow');
+        var Cir = sessionStorage.getItem('Circle');
+        // Here we are creating local storage, this stays around.
+        localStorage.setItem('Triangle', 'Green');
+        var Tri = localStorage.getItem('Triangle');
+        // This part makes it show up in the console so we can see what it is doing without going to the storage area.
+        console.log(Tri, Cir);
+        // This removes the object from the local storage.
+        localStorage.removeItem("Triangle");
+        // This is creating an empty list so we can fill it below.
+        var shapes = [];
+        shapes.push('Rectangle');
+        shapes.push('Square');
+        // here we are making the list a string so we can store it.
+        var JSONShapes = JSON.stringify(shapes);
+        // storing the list in the local storage.
+        localStorage.setItem('shapes', JSONShapes);
+        // this part is sending it to the console, instead of making a var that would be used, I tried just making it parse right in it, and it worked!
+        console.log(JSON.parse(localStorage['shapes']));
+        // This part was to experiment with using associative arrays, which I didn't think was going to work. I saw lots of stuff saying it couldn't when I was looking it up.
+        var colors = {
+            'Blue': 1,
+            'Red': 2,
+            'Purple': 3
+        };
+        localStorage.setItem('colors', JSON.stringify(colors));
+        console.log(JSON.parse(localStorage['colors']));
+    </script>
+    <p> This is all done in the console, take it look there to see what is going on!</p>
+
+</body></html>
