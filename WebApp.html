@@ -1,0 +1,213 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Web App Final</title>
+
+</head>
+
+<body>
+    <style>
+        p.css {
+            width: 300px;
+            height: 200px;
+            background-color: skyblue;
+            text-align: center;
+            font-size: 30px;
+            transition: background 2s, height 2s, width 2s,
+        }
+
+        .change1 {
+            width: 300px;
+            height: 200px;
+            background-color: pink;
+            text-align: center;
+            font-size: 30px;
+            transition: background 3s;
+
+        }
+
+        .change2 {
+            width: 300px;
+            height: 200px;
+            background-color: gray;
+            text-align: center;
+            font-size: 30px;
+            transition: background 5s;
+            position: relative;
+            animation-name: changeC;
+            animation-duration: 3s;
+        }
+
+        @keyframes changeC {
+            25% {
+                left: 25px;
+            }
+
+            50% {
+                left: 50px;
+            }
+
+            75% {
+                left: 75px;
+            }
+
+            100% {
+                left: 100px;
+            }
+        }
+
+        .change3 {
+            width: 300px;
+            height: 200px;
+            background-color: green;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .change4 {
+            width: 300px;
+            height: 200px;
+            background-color: purple;
+            text-align: center;
+            font-size: 30px;
+            transition: background 5s;
+            position: relative;
+            animation-name: changeB;
+            animation-duration: 3s;
+        }
+
+        @keyframes changeB {
+            25% {
+                left: 25px;
+                top: 25px;
+            }
+
+            50% {
+                left: 50px;
+                top: 50px;
+            }
+
+            75% {
+                left: 75px;
+                top: 75px;
+            }
+
+            100% {
+                left: 100px;
+                top: 100px;
+            }
+        }
+
+        #num1,
+        #num2 {
+            width: 40px;
+        }
+
+        #addOut {
+            display: inline;
+        }
+    </style>
+    <script>
+        localStorage.setItem('Minimum', 0);
+        localStorage.setItem('Maximum', 100);
+        var out;
+
+        function add() {
+            var min = localStorage.getItem('Minimum');
+            var max = localStorage.getItem('Maximum');
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+            // var out;
+            if (num1 > min && num2 > min) {
+                if (num1 < max && num2 < max) {
+                    out = num1 + num2
+                } else {
+                    out = "Cannot add those, one or more is too high."
+                }
+            } else {
+                out = "Cannot add those, one or more is too low."
+            }
+            document.getElementById('addOut').innerHTML = out;
+        }
+
+        var xmlhttp = new XMLHttpRequest();
+        var text = "list.txt";
+        var arr;
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                arr = JSON.parse(this.responseText);
+            }
+        }
+        xmlhttp.open("GET", text, true);
+        xmlhttp.send();
+
+        function cssChange(arr) {
+            var change = document.getElementById('cssChange');
+
+            var input;
+
+            if (out < 25) {
+                input = 1;
+            } else if (out < 50) {
+                input = 2;
+            } else if (out < 75) {
+                input = 3;
+            } else if (out < 100) {
+                input = 4;
+            } else {
+                input = 5;
+            }
+
+            if (input == 1) {
+                change.className = 'change1'
+
+            } else if (input == 2) {
+                change.className = 'change2'
+
+            } else if (input == 3) {
+                change.className = 'change3'
+
+            } else if (input == 4) {
+                change.className = 'change4'
+
+            } else {
+                change.className = 'css'
+
+            }
+            var i = parseFloat(input);
+            var outt = arr[i].val;
+
+            document.getElementById('outt').innerHTML = outt;
+
+        }
+    </script>
+    <p id="Instructions">
+        Let's change the CSS with some buttons and math problems!
+    </p>
+    <section id="addSection">
+        <p id="add">
+            Here let's do some addtion. Use numbers between 0 and 100.
+        </p>
+
+        <input type="number" id="num1">
+        +
+        <input type="number" id="num2">
+        =
+        <div id="addOut"></div> <br />
+        <button id="addButton" onclick="add()"> Add!
+        </button>
+    </section>
+    <section id="CSSSection">
+        <p class="css" id="cssChange">
+            We'll change this box based on the number you get above!
+        </p>
+        <button id="change1" onclick="cssChange()">Change</button>
+        <div id="outt"></div>
+    </section>
+    <a href="https://kaitlynmiller17.github.io/MobileApp/">Back to Homepage</a>
+</body></html>
+
