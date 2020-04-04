@@ -1,0 +1,21 @@
+[           {
+                "key": "1",
+                "val": "This number was between 1 and 25"
+            },
+            {
+                "key": "2",
+                "val": "This number was between 26 and 49"
+            },
+            {
+                "key": "3",
+                "val": "This number was between 50 and 74"
+            },
+            {
+                "key": "4",
+                "val": "This number was between 75 and 100"
+            },
+            {
+                "key": "5",
+                "val": "These numbers didn't work, the box will not change"
+            }
+]
